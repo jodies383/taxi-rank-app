@@ -12,13 +12,13 @@ export const TaxiRankApp = () =>{
         queue: 23
     }]
 
-    const incrementQueue = () => {
+    const incrementQueue = (destination) => {
         for (let i = 0; i < rank.length; i++) {
-           console.log(rank[i].queue++); 
-            
+           if (destination == rank[i].destination){
+           (rank[i].queue++); 
+            }
         }
-      
-         
+        console.log(rank);
     }
     const decrementQueue = () => {
 
