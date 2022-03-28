@@ -31,7 +31,7 @@
                     <a class="btn btn-secondary queueDown" data-destination="{{this.destination}}" name="minus">-</a>
                 </td>
                     <td>
-                        <button class="btn btn-secondary depart" data-destination="{{this.destination}}" type="button" name="departed">taxi departed</button>
+                        <button class="btn btn-secondary" id="depart" data-destination="{{this.destination}}" type="button" name="departed">taxi departed</button>
                         </td>
                         <td>
                             {{this.departedTaxis}} taxis departed
@@ -67,16 +67,18 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+            <input type="text" class="form-control" id="usr">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="save">Save changes</button>
         </div>
       </div>
     </div>
   </div>
-        <div class="row">
+  
+  <div class="row">
+            <div class="warn"></div>
             <div class="destinations"></div>
         </div>
     </div>

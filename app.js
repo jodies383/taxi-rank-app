@@ -1,4 +1,5 @@
 export const TaxiRankApp = () => {
+    let warning = ""
     let rank = [{
         destination: "Makhaza",
         queue: 12,
@@ -25,7 +26,6 @@ export const TaxiRankApp = () => {
                 localStorage.setItem('destination', JSON.stringify(rank));
             }
         }
-        console.log(rank);
     }
     const decrementQueue = (destination) => {
         for (let i = 0; i < rank.length; i++) {
@@ -47,29 +47,33 @@ export const TaxiRankApp = () => {
                     localStorage.setItem('destination', JSON.stringify(rank));
 
                 }
-                // else {
-                //     return "disabled"
-                // }
+                else {
+                    warning = "Taxi needs at least 12 people to depart"
+                }
             }
         }
     }
     const newDestination = (destinationName) => {
-        rank.push({
-            destination: destinationName,
-            queue: 0,
-            departedTaxis: 0
-        })
+        if (destinationName) {
+            rank.push({
+                destination: destinationName,
+                queue: 0,
+                departedTaxis: 0
+            })
+            localStorage.setItem('destination', JSON.stringify(rank));
+        }
     }
-    // const greyedOut = (destination) => {
-    //     for (let i = 0; i < rank.length; i++) {
-    //         if (destination == rank[i].destination) {
-    //             if (rank[i].queue < 12) {
-    //                 return "disabled"
-    //             }
-    //         }
-    //     }
-    // }
+    const greyedOut = (button) => {
+        for (let i = 0; i < rank.length; i++) {
+            // if (destination == rank[i].destination) {
+                if (rank[i].queue < 12) {
+                    return button.disabled = true
+                // }
+            }
+        }
+    }
     const returnRankInfo = () => rank
+    const returnWarning = () => warning
 
     return {
         returnRankInfo,
@@ -77,6 +81,7 @@ export const TaxiRankApp = () => {
         decrementQueue,
         departTaxi,
         newDestination,
-        // greyedOut
+        greyedOut,
+        returnWarning
     }
 }
