@@ -16,10 +16,10 @@
             <thead>
               <tr>
                 <th scope="col">Destination</th>
-                <th scope="col">Queue
-                   
-                </th> 
+                <th scope="col">Queue</th> 
                 <th scope="col">Taxi Status</th>
+                <th scope="col">Taxis departed</th>
+
             </tr>
         </thead>
         <tbody>
@@ -32,8 +32,10 @@
                 </td>
                     <td>
                         <button class="btn btn-secondary depart" data-destination="{{this.destination}}" type="button" name="departed">taxi departed</button>
-                        {{this.departedTaxis}}
                         </td>
+                        <td>
+                            {{this.departedTaxis}} taxis departed
+                            </td>
                     </tr>
                 </tbody>
             </table>
@@ -50,6 +52,30 @@
         </div>
     </nav>
     <div class="container mt-12">
+        <br>
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add new destination
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add a new destination</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
         <div class="row">
             <div class="destinations"></div>
         </div>
