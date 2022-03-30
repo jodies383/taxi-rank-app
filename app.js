@@ -45,6 +45,7 @@ export const TaxiRankApp = () => {
                     (rank[i].queue = 0),
                         (rank[i].departedTaxis++)
                     localStorage.setItem('destination', JSON.stringify(rank));
+                    warning = ""
 
                 }
                 else {
@@ -63,13 +64,14 @@ export const TaxiRankApp = () => {
             localStorage.setItem('destination', JSON.stringify(rank));
         }
     }
-    const greyedOut = (button) => {
+    const greyedOut = (destination) => {
         for (let i = 0; i < rank.length; i++) {
-            // if (destination == rank[i].destination) {
-                if (rank[i].queue < 12) {
-                    return button.disabled = true
-                // }
-            }
+            if (destination == rank[i].destination) {
+                if (rank[i].queue > 12) {
+                    return true
+                }
+               
+            } return true
         }
     }
     const returnRankInfo = () => rank

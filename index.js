@@ -24,8 +24,13 @@ destinations.addEventListener('click', (e) => {
         taxiRankApp.decrementQueue(e.target.dataset.destination)
     } else if (e.target.name === "departed") {
         taxiRankApp.departTaxi(e.target.dataset.destination)
-        warn.innerHTML = taxiRankApp.returnWarning(e.target.dataset.destination)
+        warn.innerHTML = taxiRankApp.returnWarning()
         //fix warning message showing up at the wrong time
+        if (taxiRankApp.greyedOut(e.target.dataset.destination) === true){
+            warn.classList.remove("alert")
+            warn.classList.remove("alert-warning")
+            console.log(taxiRankApp.greyedOut(e.target.dataset.destination));
+        }
         warn.classList.add("alert")
         warn.classList.add("alert-warning")
         setTimeout(() => { warn.innerHTML = "" }, 2000);
